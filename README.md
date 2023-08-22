@@ -20,6 +20,11 @@ It is recommended to automate this process using AWS CodeBuild. A buildspec file
 A sample CloudFormation template is provided to setup the CodeBuild project, [sample-buildproject.yaml](sample-buildproject.yaml).
 
 ```bash
+docker run --rm -v `pwd`:/var/task --platform linux/amd64 public.ecr.aws/sam/build-nodejs18.x npm run build
+SAM_BUCKET=builds.your-bucket.com AWS_REGION=eu-west-1 npm run deploy
+```
+
+```bash
 npm run build
 SAM_BUCKET=your-s3-bucket npm run deploy
 ```
